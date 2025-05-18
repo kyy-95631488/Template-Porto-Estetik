@@ -28,7 +28,7 @@ export default function Education() {
 
   // Fetch data
   useEffect(() => {
-    fetch("https://portoku.live/api/v1/visitor/testbug")
+    fetch(process.env.NEXT_PUBLIC_API_URL)
       .then((r) => r.json())
       .then((json) => setData(json.data.userEducationData || []))
       .catch(setError)

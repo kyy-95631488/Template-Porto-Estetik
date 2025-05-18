@@ -16,7 +16,7 @@ export default function ProjectsPage() {
   const username = "testbug";
 
   useEffect(() => {
-    fetch("https://portoku.live/api/v1/visitor/testbug")
+    fetch(process.env.NEXT_PUBLIC_API_URL)
       .then((r) => r.json())
       .then(({ data }) => setProjects(data.userProjectData))
       .catch(setError)
@@ -74,10 +74,9 @@ export default function ProjectsPage() {
               <Link
                 key={p._id}
                 href={`/detail-project?username=${username}&projectId=${p._id}`}
-                passHref
               >
-                <motion.a
-                  className="block bg-white/10 p-4 rounded-2xl shadow-md hover:shadow-2xl transition-shadow"
+                <motion.div
+                  className="block bg-white/10 p-4 rounded-2xl shadow-md hover:shadow-2xl transition-shadow cursor-pointer"
                   variants={fadeIn("up", 0)}
                 >
                   <img
@@ -89,7 +88,7 @@ export default function ProjectsPage() {
                     {p.name}
                   </span>
                   <p className="text-white/80 text-sm mb-2">{p.overview}</p>
-                </motion.a>
+                </motion.div>
               </Link>
             ))}
           </motion.div>

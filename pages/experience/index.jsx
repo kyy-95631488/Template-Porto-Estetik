@@ -23,7 +23,7 @@ export default function Experience() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("https://portoku.live/api/v1/visitor/testbug")
+    fetch(process.env.NEXT_PUBLIC_API_URL)
       .then((r) => r.json())
       .then((json) => setData(json.data.userExperienceData))
       .catch(setError)

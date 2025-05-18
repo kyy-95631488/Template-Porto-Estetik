@@ -15,7 +15,7 @@ const Home = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch("https://portoku.live/api/v1/visitor/testbug");
+        const response = await fetch(process.env.NEXT_PUBLIC_API_URL);
         const result = await response.json();
         const userData = result.data.userData;
         const detail = result.data.userDetailData;
